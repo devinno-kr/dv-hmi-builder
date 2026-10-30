@@ -12,6 +12,19 @@ The screens and the communication are not written from scratch. Screens are put 
 
 ![The chat with Claude on the left and the dashboard on the right: the request just handled is at the top of the work history, with its build and test results](assets/readme-app.en.webp)
 
+## Getting started
+
+You need Windows 10 or 11, the [Claude desktop app](https://claude.ai/download) and the [.NET 9 SDK](https://dotnet.microsoft.com/download) or later. Installing git is also recommended (`winget install Git.Git`): with it, the work can be split up to go faster, and earlier states can be restored.
+
+The plugin is installed from a terminal where Claude Code is installed. Restart the desktop app afterwards.
+
+```bash
+claude plugin marketplace add devinno-kr/dv-hmi-builder
+claude plugin install dv-hmi@dv-hmi-builder
+```
+
+To start, create an empty folder, open it in a new session in the Code tab, and say what you want to build with dv-hmi. At first only three things are asked: the project name, how to proceed (workflow or assistant mode), and where the program will run (Windows PC or [Senvas](https://intosen.com/en/senvas/) touchscreen panel). After that, the project is ready in 1 to 3 minutes and the dashboard opens.
+
 ## How it works
 
 A project usually starts with a single sentence, such as "Build me a monitoring program for our compressor room with dv-hmi." Address tables, device manuals or photos of existing screens can be uploaded on the dashboard.
@@ -63,18 +76,7 @@ Touch panel programs run on [Senvas Touch](https://intosen.com/en/senvas/), a Ra
 
 Workflow mode has been tested end to end six times: on a climate test chamber, a battery energy storage system (BESS), a CIP cleaning plant, an air compressor room, a cold storage warehouse and a water treatment demo. Each run went from the first sentence to a delivered program with tests and a simulator. In the first four we played the customer; in the last two a person did. Assistant mode was tested once, on a feed water pump. The address tables were made up for the tests and no real equipment was connected, but the water treatment demo was deployed to a real touchscreen panel and run there. After each run we changed the plugin's rules based on the problems that came up.
 
-## Getting started
-
-You need Windows 10 or 11, the [Claude desktop app](https://claude.ai/download) and the [.NET 9 SDK](https://dotnet.microsoft.com/download) or later. Installing git is also recommended (`winget install Git.Git`): with it, the work can be split up to go faster, and earlier states can be restored.
-
-The plugin is installed from a terminal where Claude Code is installed. Restart the desktop app afterwards.
-
-```bash
-claude plugin marketplace add devinno-kr/dv-hmi-builder
-claude plugin install dv-hmi@dv-hmi-builder
-```
-
-To start, create an empty folder, open it in a new session in the Code tab, and say what you want to build with dv-hmi. At first only three things are asked: the project name, how to proceed (workflow or assistant mode), and where the program will run (Windows PC or [Senvas](https://intosen.com/en/senvas/) touchscreen panel). After that, the project is ready in 1 to 3 minutes and the dashboard opens.
+## Continuing and updating
 
 To continue on another day, open the same folder and say "continue". The plugin is updated with:
 

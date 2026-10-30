@@ -12,6 +12,19 @@ HMI 하나를 만들려면 할 일이 많습니다. 장비 주소표를 읽어 �
 
 ![왼쪽은 Claude와의 대화, 오른쪽은 대시보드: 방금 처리한 요청이 작업 내역 맨 위에 빌드·테스트 결과와 함께 보입니다](assets/readme-app.ko.webp)
 
+## 시작하기
+
+Windows 10 또는 11, [Claude 데스크톱 앱](https://claude.ai/download), [.NET 9 SDK](https://dotnet.microsoft.com/download) 이상이 필요합니다. git도 설치해 두는 것을 권합니다(`winget install Git.Git`). git이 있으면 작업을 나눠 더 빨리 만들 수 있고, 이전 상태로 되돌릴 수도 있습니다.
+
+플러그인은 Claude Code가 설치된 터미널에서 설치하고, 설치한 뒤 데스크톱 앱을 다시 시작합니다.
+
+```bash
+claude plugin marketplace add devinno-kr/dv-hmi-builder
+claude plugin install dv-hmi@dv-hmi-builder
+```
+
+빈 폴더를 하나 만들고 Code 탭에서 그 폴더로 새 세션을 연 뒤, dv-hmi로 무엇을 만들고 싶은지 말하면 시작됩니다. 처음에는 세 가지만 묻습니다. 프로젝트 이름, 진행 방식(워크플로 모드 또는 어시스턴트 모드), 프로그램을 쓸 곳(Windows PC 또는 [Senvas](https://intosen.com/senvas/) 터치스크린 패널)입니다. 답하면 1~3분 안에 프로젝트가 준비되고 대시보드가 열립니다.
+
 ## 진행 방식
 
 보통은 "dv-hmi로 압축기실 감시 프로그램 만들거야" 같은 한 문장으로 시작합니다. 주소표나 장비 설명서, 기존 화면 사진이 있으면 대시보드에 올립니다.
@@ -63,18 +76,7 @@ Claude는 이야기를 들으면서 화면 시안을 바로 그려 보여 주고
 
 워크플로 모드로 처음부터 끝까지 여섯 번 시험했습니다. 대상은 항온항습 챔버, 배터리 에너지 저장장치(BESS), CIP 세척 설비, 공기압축기실, 냉장·냉동 창고, 수처리 시연 프로그램이었고, 모두 첫 문장에서 시작해 테스트와 시뮬레이터를 갖춘 프로그램을 넘기는 데까지 갔습니다. 앞의 네 번은 우리가 고객 역할을 했고, 뒤의 두 번은 사람이 직접 고객이 되었습니다. 어시스턴트 모드는 급수 펌프로 한 번 시험했습니다. 주소표는 시험용으로 만든 것이고 실제 장비는 연결하지 않았지만, 수처리 시연 프로그램은 실제 터치스크린 패널에 배포해 돌려 보았습니다. 시험할 때마다 드러난 문제를 보고 플러그인의 규칙을 고쳐 왔습니다.
 
-## 시작하기
-
-Windows 10 또는 11, [Claude 데스크톱 앱](https://claude.ai/download), [.NET 9 SDK](https://dotnet.microsoft.com/download) 이상이 필요합니다. git도 설치해 두는 것을 권합니다(`winget install Git.Git`). git이 있으면 작업을 나눠 더 빨리 만들 수 있고, 이전 상태로 되돌릴 수도 있습니다.
-
-플러그인은 Claude Code가 설치된 터미널에서 설치하고, 설치한 뒤 데스크톱 앱을 다시 시작합니다.
-
-```bash
-claude plugin marketplace add devinno-kr/dv-hmi-builder
-claude plugin install dv-hmi@dv-hmi-builder
-```
-
-빈 폴더를 하나 만들고 Code 탭에서 그 폴더로 새 세션을 연 뒤, dv-hmi로 무엇을 만들고 싶은지 말하면 시작됩니다. 처음에는 세 가지만 묻습니다. 프로젝트 이름, 진행 방식(워크플로 모드 또는 어시스턴트 모드), 프로그램을 쓸 곳(Windows PC 또는 [Senvas](https://intosen.com/senvas/) 터치스크린 패널)입니다. 답하면 1~3분 안에 프로젝트가 준비되고 대시보드가 열립니다.
+## 이어서 하기와 업데이트
 
 다른 날 이어서 할 때는 같은 폴더를 열고 "이어서 하자"라고 하면 됩니다. 플러그인 업데이트는 다음 명령으로 합니다.
 
