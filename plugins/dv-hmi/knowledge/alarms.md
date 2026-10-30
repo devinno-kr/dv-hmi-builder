@@ -18,3 +18,9 @@ Devinno.UI `dvml-ui-markup.md` §13 and the `AlarmLog` remarks in `Devinno.UI.xm
 Not in the library — build only if the user needs it, and ask first: return-to-normal time, latch and reset, shelving, sound, alarm history file.
 
 Pattern for raising and acknowledging: `reference/HotAirDryerHmi/Managers/LogicManager.cs` (`Judge`) and `Pages/AlarmBar.cs` (banner, ack). An alarm list page is a screen like any other: design its layout for this program (screens.md) — the reference's alarm page is not a template for it.
+
+## Alarm page
+
+- The list is the page: give it the height, since rows that do not fit are not drawn. Counts per priority fit as small chips in the header row, not as big cards, and each count appears once on the page.
+- Acknowledge all is a secondary button beside the list (its header, over the ack column), never the most prominent control and not next to the alarm banner — a touch aimed at the banner must not acknowledge everything.
+- Current alarms and history are views of one page (tabs), not a dialog: a full-screen dialog hides the banner and comm state while it is open.

@@ -5,6 +5,7 @@ Read when: making or changing a screen.
 ## Whose design
 
 - The design follows the user's intent. If the user describes or shows how it should look, build exactly that.
+- A box sketch (labelled rectangles) fixes **where** things go and what each area holds, not how they look. Keep its layout, and fill each box as if the look were left to you: the control that fits the kind of value (table below), not one plain card per box.
 - If the user leaves it to you, work out the design that is most beautiful and communicates best **for this program**. Start from what the operator must notice first, what kind of equipment it is (a process flow, a few key values, a sequence of steps), and what the operator does most often; choose the layout and the controls from that.
 - **The frame comes first.** Before the first page, decide how the operator moves between screens and where what every screen needs lives — the menu, comm state, unacknowledged alarms, the clock, the language switch (EN / 한국어): bars at the top, bottom, left or right (`DvBar`, Devinno.UI `dvml-ui-markup.md` §16.5–16.6), inside the pages, or no bars at all. setup places no bars on purpose, so the frame is yours to choose.
 - **Find the options in this program, not in a finished screen.** Ask what the operator must notice first and from how far away, touch or mouse, how many screens and how often they switch, how wide the main content is. Different answers point to different frames and layouts (a dock under the thumb, a narrow rail beside a wide diagram, one screen with no menu at all). Compare at least two for this program in your head (no draft of the others), pick one, and tell the user that direction in one sentence as you draft it — the interview drafts right away.
@@ -13,7 +14,7 @@ Read when: making or changing a screen.
 
 ## Principles
 
-Fill the window — HMI screens rarely leave empty regions (spacing between elements is fine, a blank half of a screen is not). Use the library's controls richly and pick them by the kind of value:
+Fill the window — HMI screens rarely leave empty regions (spacing between elements is fine, a blank half of a screen is not). Fill it by giving the screen's main content more room (a longer list, a bigger diagram), not with extra cards that repeat what another part of the screen already shows. Use the library's controls richly and pick them by the kind of value:
 
 | Kind of value | Controls (Devinno.UI `dvml-ui-markup.md` §7–§12) |
 |---|---|
