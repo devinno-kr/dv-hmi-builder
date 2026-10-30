@@ -1,0 +1,6 @@
+* text=auto
+*.dll binary
+*.exe binary
+*.webp binary
+*.png binary
+*.ttf binary

@@ -1,0 +1,60 @@
+<DvPageFrame vm="HotAirDryerHmi.Pages.RecipePage" style="padding:16 20; gap:12">
+  <DvRow grow="1" align="stretch" gap="lg">
+    <DvCard title="@rec.list" badge="{Recipes.Count}" style="width:280">
+      <DvListBox value="{Bind SelectedName}" items="{Recipes}" item-value="Name" item-text="Name" grow="1" style="height:0"/>
+      <DvGrid columns="3" gap="sm">
+        <DvButton variant="secondary" size="sm" icon="fa-plus" text="@btn.new" onclick="Add"/>
+        <DvButton variant="secondary" size="sm" icon="fa-copy" text="@btn.copy" onclick="Copy"/>
+        <DvButton variant="ghost" size="sm" icon="fa-trash-can" text="@btn.delete" onclick="Delete"/>
+      </DvGrid>
+    </DvCard>
+
+    <DvCard title="@rec.edit" badge="{ActiveText}" grow="1" style="width:0">
+      <DvGrid columns="1fr 1fr" gap="md">
+        <DvStack gap="xs">
+          <DvLabel class="caption" text="@rec.name"/>
+          <DvInput value="{Bind Edit.Name}" placeholder="@rec.name.ph"/>
+        </DvStack>
+        <DvStack gap="xs">
+          <DvLabel class="caption" text="@rec.material"/>
+          <DvInput value="{Bind Edit.Material}" placeholder="@rec.material.ph"/>
+        </DvStack>
+      </DvGrid>
+
+      <DvRow align="stretch" gap="lg">
+        <DvStack gap="xs" grow="1" style="width:0">
+          <DvLabel class="caption" text="@rec.steps"/>
+          <DvDataGrid items="{Edit.Steps}" row-height="44" style="height:174; border-radius: token(radius.md); border:1 token(border)">
+            <DvColumn header="{L10n.col.step}" field="Label" width="90"/>
+            <DvColumn header="{L10n.col.temp}" field="TempC" cell-type="input" min="20" max="{TripLimit}" unit="℃" format="0.0" align="right"/>
+            <DvColumn header="{L10n.col.time}" field="Minutes" cell-type="input" min="1" max="600" unit="{L10n.unit.min}" align="right"/>
+          </DvDataGrid>
+        </DvStack>
+        <DvStack gap="xs" style="width:300">
+          <DvLabel class="caption" text="@rec.chart"/>
+          <DvBarChart items="{Edit.Steps}" item-value="TempC" item-text="Label" y-min="0" y-max="200" show-value="true" tone="warning" style="height:176"/>
+        </DvStack>
+      </DvRow>
+
+      <DvRow align="stretch" gap="lg" grow="1">
+        <DvStack gap="xs" align="center" style="width:150">
+          <DvLabel class="caption" text="@rec.drytemp"/>
+          <DvKnob value="{Bind Edit.Dry.TempC}" min="20" max="{TripLimit}" step="1" unit="℃" input-mode="both" style="width:104; height:104"/>
+        </DvStack>
+        <DvStack gap="sm" grow="1" justify="center">
+          <DvRow><DvLabel class="label" text="@rec.fan"/><DvSpacer/><DvLabel class="caption" text="20 ~ 100%"/></DvRow>
+          <DvSlider value="{Bind Edit.FanPct}" min="20" max="100" step="5" unit="%" show-value="true"/>
+          <DvLabel class="caption" text="{TotalText}"/>
+        </DvStack>
+      </DvRow>
+
+      <DvRow gap="sm">
+        <DvLabel class="caption" text="@rec.knobhint"/>
+        <DvSpacer/>
+        <DvButton variant="ghost" icon="fa-rotate-left" text="@btn.revert" onclick="Revert"/>
+        <DvButton variant="secondary" icon="fa-floppy-disk" text="@btn.save" onclick="Save"/>
+        <DvButton variant="primary" icon="fa-paper-plane" text="@btn.apply" onclick="Apply"/>
+      </DvRow>
+    </DvCard>
+  </DvRow>
+</DvPageFrame>

@@ -1,0 +1,65 @@
+<DvPageFrame vm="HotAirDryerHmi.Pages.MonitorPage" style="padding:16 20; gap:12">
+  <DvGrid columns="4" gap="lg">
+    <DvCard title="@main.chamber" badge="℃">
+      <DvGauge value="{Chamber}" min="0" max="220" ticks="50" minor-ticks="10" alarm-zones="{TempZones}" format="0.0" style="height:124"/>
+      <DvLabel class="caption" text="{SetText}" style="text-align:center"/>
+    </DvCard>
+    <DvCard title="@main.heater" badge="H-101">
+      <DvRing value="{Heater}" unit="%" label="@mon.output" tone="warning" format="0" style="height:124"/>
+      <DvRow gap="xs" justify="center">
+        <DvLabel class="caption" text="@mon.inlet"/>
+        <DvLabel class="label" text="{Inlet}℃"/>
+      </DvRow>
+    </DvCard>
+    <DvCard title="@mon.fan" badge="B-101">
+      <DvRing value="{Fan}" unit="%" label="@mon.blower" tone="info" format="0" sweep="240" style="height:96"/>
+      <DvStack gap="xs">
+        <DvRow><DvLabel class="caption" text="@mon.damper"/><DvSpacer/><DvLabel class="caption" text="{Damper}%"/></DvRow>
+        <DvProgress value="{Damper}" tone="success"/>
+      </DvStack>
+    </DvCard>
+    <DvCard title="@mon.hopper" badge="D-101">
+      <DvRow justify="center">
+        <DvTank value="{Level}" unit="%" alarm-zones="{LevelZones}" format="0" style="width:72; height:124"/>
+      </DvRow>
+      <DvLabel class="caption" text="@mon.loader" style="text-align:center"/>
+    </DvCard>
+  </DvGrid>
+
+  <DvRow grow="1" align="stretch" gap="lg">
+    <DvCard title="@mon.trend" grow="1" style="width:0">
+      <DvRow>
+        <DvLabel class="caption" text="@mon.trendnote"/>
+        <DvSpacer/>
+        <DvSegment value="{Bind WindowSec}">
+          <DvOption value="60" text="@win.1m"/>
+          <DvOption value="120" text="@win.2m"/>
+          <DvOption value="600" text="@win.10m"/>
+          <DvOption value="3600" text="@win.1h"/>
+        </DvSegment>
+      </DvRow>
+      <DvTrend source="{Trend}" window="{WindowSec}" y-min="0" y-max="220" area="false" grow="1">
+        <DvTrendChannel name="chamber" label="@ch.chamber" unit="℃" color="#f97316"/>
+        <DvTrendChannel name="set" label="@ch.set" unit="℃" color="token(text-muted)"/>
+        <DvTrendChannel name="inlet" label="@ch.inlet" unit="℃" color="#facc15"/>
+        <DvTrendChannel name="exhaust" label="@ch.exhaust" unit="℃" color="#22d3ee"/>
+      </DvTrend>
+    </DvCard>
+
+    <DvStack gap="lg" style="width:270">
+      <DvCard grow="1">
+        <DvRow><DvLabel class="label muted" text="@main.humidity"/><DvSpacer/><DvLabel class="title" text="{HumidityText} %RH"/></DvRow>
+        <DvSparkline values="{HumidityRecent}" area="true" tone="info" grow="1" style="min-height:32"/>
+      </DvCard>
+      <DvCard grow="1">
+        <DvRow><DvLabel class="label muted" text="@main.heater"/><DvSpacer/><DvLabel class="title" text="{HeaterText} %"/></DvRow>
+        <DvSparkline values="{HeaterRecent}" area="true" tone="warning" grow="1" style="min-height:32"/>
+      </DvCard>
+      <DvCard grow="1">
+        <DvRow><DvLabel class="label muted" text="@mon.exhaust"/><DvSpacer/><DvLabel class="title" text="{ExhaustText} ℃"/></DvRow>
+        <DvSparkline values="{ExhaustRecent}" area="true" tone="success" grow="1" style="min-height:32"/>
+      </DvCard>
+      <DvLabel class="caption" text="@mon.recent" style="text-align:center"/>
+    </DvStack>
+  </DvRow>
+</DvPageFrame>

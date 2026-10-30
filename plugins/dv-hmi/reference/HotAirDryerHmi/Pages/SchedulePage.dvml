@@ -1,0 +1,47 @@
+<DvPageFrame vm="HotAirDryerHmi.Pages.SchedulePage" style="padding:16 20; gap:12">
+  <DvRow grow="1" align="stretch" gap="lg">
+    <DvCard title="@sch.title" grow="1" style="width:0">
+      <DvRow>
+        <DvSwitch label="@sch.enable" value="{Bind Enabled}" style="width:220"/>
+        <DvBadge tone="{ModeTone}" text="{ModeText}"/>
+      </DvRow>
+      <DvDataGrid items="{Items}" row-key="Id" row-height="46" grow="1" style="height:0; border-radius: token(radius.md); border:1 token(border)">
+        <DvColumn header="{L10n.col.use}" field="Enabled" cell-type="check" width="64" align="center"/>
+        <DvColumn header="{L10n.col.start}" field="Start" cell-type="datetime" format="HH:mm" width="96"/>
+        <DvColumn header="{L10n.col.recipe}" field="RecipeName" cell-type="select" items="{RecipeNames}" width="150"/>
+        <DvColumnGroup header="{L10n.col.days}">
+          <DvColumn header="{L10n.day.mon}" field="Mon" cell-type="check" width="52" align="center"/>
+          <DvColumn header="{L10n.day.tue}" field="Tue" cell-type="check" width="52" align="center"/>
+          <DvColumn header="{L10n.day.wed}" field="Wed" cell-type="check" width="52" align="center"/>
+          <DvColumn header="{L10n.day.thu}" field="Thu" cell-type="check" width="52" align="center"/>
+          <DvColumn header="{L10n.day.fri}" field="Fri" cell-type="check" width="52" align="center"/>
+          <DvColumn header="{L10n.day.sat}" field="Sat" cell-type="check" width="52" align="center"/>
+          <DvColumn header="{L10n.day.sun}" field="Sun" cell-type="check" width="52" align="center"/>
+        </DvColumnGroup>
+        <DvColumn header="{L10n.col.next}" field="NextText"/>
+        <DvColumn header="" cell-type="button" icon="fa-trash-can" variant="ghost" onclick="Remove" width="56"/>
+      </DvDataGrid>
+      <DvRow gap="sm">
+        <DvButton variant="secondary" icon="fa-plus" text="@btn.add" onclick="Add"/>
+        <DvSpacer/>
+        <DvButton variant="ghost" icon="fa-rotate-left" text="@btn.revert" onclick="Revert"/>
+        <DvButton variant="primary" icon="fa-floppy-disk" text="@btn.save" onclick="Save"/>
+      </DvRow>
+    </DvCard>
+
+    <DvStack gap="lg" style="width:300">
+      <DvCard title="@sch.next">
+        <DvLabel class="display mono" text="{NextTime}" style="font-size:44"/>
+        <DvLabel class="body" text="{NextDay}"/>
+        <DvRow gap="sm">
+          <DvIcon icon="fa-flask" style="font-size:16; color: token(primary)"/>
+          <DvLabel class="title" text="{NextRecipe}"/>
+        </DvRow>
+        <DvLabel class="caption" text="{NextIn}"/>
+      </DvCard>
+      <DvCard title="@sch.byday" grow="1">
+        <DvBarChart items="{Week}" item-value="Count" item-text="Day" y-min="0" y-max="4" show-value="true" tone="info" grow="1" style="height:0"/>
+      </DvCard>
+    </DvStack>
+  </DvRow>
+</DvPageFrame>

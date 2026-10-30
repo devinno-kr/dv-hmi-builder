@@ -1,0 +1,26 @@
+<DvPageFrame vm="HotAirDryerHmi.Pages.AlarmPage" style="padding:16 20; gap:12">
+  <DvRow grow="1" align="stretch" gap="lg">
+    <DvCard title="@alm.list" grow="1" style="width:0">
+      <DvRow gap="sm">
+        <DvBadge tone="{UnAckedTone}" text="{UnAckedText}"/>
+        <DvBadge tone="neutral" text="{TotalText}"/>
+        <DvSpacer/>
+        <DvButton variant="secondary" size="sm" icon="fa-check-double" text="@btn.ackall" onclick="AckAll"/>
+      </DvRow>
+      <DvAlarmList items="{Alarms}" onack="Ack" row-height="40" grow="1" style="height:0"/>
+    </DvCard>
+
+    <DvStack gap="lg" style="width:360">
+      <DvGrid columns="2" gap="md">
+        <DvStat label="@alm.stat.unacked" value="{UnAcked}" unit="@unit.count" tone="{UnAckedTone}"/>
+        <DvStat label="@alm.stat.critical" value="{Critical}" unit="@unit.count" tone="danger"/>
+      </DvGrid>
+      <DvCard title="@alm.bypri">
+        <DvBarChart items="{ByPriority}" item-value="Count" item-text="Name" show-value="true" tone="danger" style="height:150"/>
+      </DvCard>
+      <DvCard title="@alm.bysource" grow="1">
+        <DvPieChart items="{BySource}" item-value="Count" item-text="Name" inner-radius="0.58" show-value="true" style="height:190"/>
+      </DvCard>
+    </DvStack>
+  </DvRow>
+</DvPageFrame>

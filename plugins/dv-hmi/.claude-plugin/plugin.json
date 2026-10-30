@@ -1,0 +1,8 @@
+﻿{
+  "name": "dv-hmi",
+  "version": "0.1.21",
+  "description": "Build C# HMIs with Devinno.UI and Devinno.Communication: project setup, dashboard, work history, screen pictures",
+  "author": {
+    "name": "Devinno"
+  }
+}

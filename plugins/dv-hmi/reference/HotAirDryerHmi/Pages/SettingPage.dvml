@@ -1,0 +1,110 @@
+<DvPageFrame vm="HotAirDryerHmi.Pages.SettingPage" style="padding:16 20; gap:12">
+  <DvStyle>
+    .field { width:240 }
+    .hint { width:260 }
+  </DvStyle>
+  <DvRow grow="1" align="stretch" gap="lg">
+    <DvCard title="@set.title" grow="1" style="width:0">
+      <DvTabs value="{Bind Tab}" grow="1">
+        <DvTab value="comm" text="@tab.comm">
+          <DvStack gap="md" style="padding-top:8">
+            <DvSwitch label="@set.sim" value="{Bind Edit.Simulation}"/>
+            <DvRow>
+              <DvLabel class="body" text="@set.ip" style="width:160"/>
+              <DvInput value="{Bind Edit.DryerIp}" placeholder="192.168.0.10" disabled="{Edit.Simulation}" class="field"/>
+              <DvLabel class="caption hint" text="@set.ip.hint"/>
+            </DvRow>
+            <DvRow>
+              <DvLabel class="body" text="@set.port" style="width:160"/>
+              <DvInput value="{Bind Edit.DryerPort}" keyboard-type="numeric" min="1" max="65535" disabled="{Edit.Simulation}" class="field"/>
+              <DvLabel class="caption hint" text="@set.port.hint"/>
+            </DvRow>
+            <DvRow>
+              <DvLabel class="body" text="@set.poll" style="width:160"/>
+              <DvInput value="{Bind Edit.PollIntervalMs}" keyboard-type="numeric" min="100" max="5000" step="100" unit="ms" show-stepper="true" class="field"/>
+              <DvLabel class="caption hint" text="@set.poll.hint"/>
+            </DvRow>
+            <DvRow>
+              <DvLabel class="body" text="@set.timeout" style="width:160"/>
+              <DvInput value="{Bind Edit.CommTimeoutSec}" keyboard-type="numeric" min="1" max="60" unit="@unit.sec" show-stepper="true" class="field"/>
+              <DvLabel class="caption hint" text="@set.timeout.hint"/>
+            </DvRow>
+          </DvStack>
+        </DvTab>
+        <DvTab value="alarm" text="@tab.alarm">
+          <DvStack gap="md" style="padding-top:8">
+            <DvRow>
+              <DvLabel class="body" text="@set.warn" style="width:160"/>
+              <DvInput value="{Bind Edit.TempWarnC}" keyboard-type="numeric" min="50" max="250" step="5" unit="℃" format="0" show-stepper="true" class="field"/>
+              <DvLabel class="caption hint" text="@set.warn.hint"/>
+            </DvRow>
+            <DvRow>
+              <DvLabel class="body" text="@set.trip" style="width:160"/>
+              <DvInput value="{Bind Edit.TempTripC}" keyboard-type="numeric" min="50" max="250" step="5" unit="℃" format="0" show-stepper="true" class="field"/>
+              <DvLabel class="caption hint" text="@set.trip.hint"/>
+            </DvRow>
+            <DvRow>
+              <DvLabel class="body" text="@set.level" style="width:160"/>
+              <DvSlider value="{Bind Edit.LevelLowPct}" min="0" max="50" step="1" unit="%" show-value="true" class="field"/>
+              <DvLabel class="caption hint" text="@set.level.hint"/>
+            </DvRow>
+          </DvStack>
+        </DvTab>
+        <DvTab value="screen" text="@tab.screen">
+          <DvStack gap="md" style="padding-top:8">
+            <DvRow>
+              <DvLabel class="body" text="@set.language" style="width:160"/>
+              <DvSegment value="{Bind Language}">
+                <DvOption value="en" text="English"/>
+                <DvOption value="ko" text="한국어"/>
+              </DvSegment>
+            </DvRow>
+            <DvRow>
+              <DvLabel class="body" text="@set.theme" style="width:160"/>
+              <DvSegment value="{Bind ThemeMode}">
+                <DvOption value="dark" text="@theme.dark"/>
+                <DvOption value="light" text="@theme.light"/>
+              </DvSegment>
+            </DvRow>
+            <DvRow>
+              <DvLabel class="body" text="@set.trend" style="width:160"/>
+              <DvInput value="{Bind Edit.TrendPoints}" keyboard-type="numeric" min="60" max="86400" step="600" unit="@unit.points" show-stepper="true" class="field"/>
+              <DvLabel class="caption hint" text="@set.trend.hint"/>
+            </DvRow>
+            <DvCheckBox text="@sch.enable" value="{Bind Edit.ScheduleEnabled}"/>
+          </DvStack>
+        </DvTab>
+      </DvTabs>
+      <DvRow gap="sm">
+        <DvLabel class="caption" text="{ConfigPath}" style="max-width:420"/>
+        <DvSpacer/>
+        <DvButton variant="ghost" icon="fa-rotate-left" text="@btn.revert" onclick="Revert"/>
+        <DvButton variant="primary" icon="fa-floppy-disk" text="@btn.save" onclick="Save"/>
+      </DvRow>
+    </DvCard>
+
+    <DvStack gap="lg" style="width:320">
+      <DvCard title="@diag.title">
+        <DvStatusItem label="@diag.comm" state="{CommState}" status="{CommStatus}"/>
+        <DvStatusItem label="@diag.sim" state="{SimState}" status="{SimStatus}"/>
+        <DvStack gap="xs">
+          <DvLabel class="caption" text="@diag.target"/>
+          <DvLabel class="body mono" text="{Target}"/>
+        </DvStack>
+        <DvStack gap="xs">
+          <DvLabel class="caption" text="@diag.last"/>
+          <DvLabel class="body mono" text="{LastReceived}"/>
+        </DvStack>
+        <DvStack gap="xs">
+          <DvLabel class="caption" text="@diag.error"/>
+          <DvLabel class="body" text="{LastError}"/>
+        </DvStack>
+      </DvCard>
+      <DvCard title="@info.title" grow="1">
+        <DvLabel class="body" text="@info.line1"/>
+        <DvLabel class="caption" text="Devinno.UI · Devinno.Communication · OpenTK (Senvas touch)"/>
+        <DvLabel class="caption" text="@info.line3"/>
+      </DvCard>
+    </DvStack>
+  </DvRow>
+</DvPageFrame>

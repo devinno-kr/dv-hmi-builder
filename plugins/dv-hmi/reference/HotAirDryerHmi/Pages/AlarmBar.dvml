@@ -1,0 +1,4 @@
+<DvRow vm="HotAirDryerHmi.Pages.AlarmBar" gap="sm" style="padding:8 20; background: token(surface); border:1 token(border)">
+  <DvAlarmBanner items="{Alarms}" onack="Ack" grow="1"/>
+  <DvButton variant="ghost" size="sm" icon="fa-list" text="@alarmbar.list" onclick="ShowAlarm"/>
+</DvRow>

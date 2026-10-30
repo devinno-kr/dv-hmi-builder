@@ -1,0 +1,22 @@
+{
+  "mon.setinfo": "Set {0:0}℃ · Warn {1:0}℃",
+  "mon.output": "Output",
+  "mon.inlet": "Hot air inlet",
+  "mon.fan": "Air & exhaust",
+  "mon.blower": "Blower",
+  "mon.damper": "Exhaust damper",
+  "mon.hopper": "Hopper material",
+  "mon.loader": "Loader refills below 20%",
+  "mon.trend": "Temperature trend",
+  "mon.trendnote": "Live · recorded every poll",
+  "win.1m": "1 min",
+  "win.2m": "2 min",
+  "win.10m": "10 min",
+  "win.1h": "1 h",
+  "ch.chamber": "Chamber",
+  "ch.set": "Set",
+  "ch.inlet": "Inlet",
+  "ch.exhaust": "Exhaust",
+  "mon.exhaust": "Exhaust temp",
+  "mon.recent": "Last minute"
+}

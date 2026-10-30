@@ -1,0 +1,41 @@
+<DvRow vm="HotAirDryerHmi.Pages.TopBar" gap="sm" style="height:68; padding:0 20; background: linear-gradient(to bottom, token(surface-raised), token(surface)); border:1 token(border)">
+  <DvStyle>
+    .brand { width:42; height:42; border-radius: token(radius.md); background: linear-gradient(135deg, #f97316, #ef4444); display:flex; justify-content:center; align-items:center }
+    .tab { padding:9 14; border-radius: token(radius.md); color: token(text-muted); font-size: token(font.body); font-weight:600; transition: background-color 150ms, color 150ms }
+    .tab:hover { background: token(surface-overlay); color: token(text) }
+    .tab-on, .tab-on:hover { background: token(primary); color: token(primary-fg) }
+    .pill { padding:6 12; border-radius: token(radius.full); background: token(background-alt); border:1 token(border) }
+    .count { padding:1 7; border-radius: token(radius.full); background: token(alarm-critical); color: token(alarm-critical-fg); font-size: token(font.caption); font-weight:bold }
+  </DvStyle>
+
+  <DvBox class="brand">
+    <DvIcon icon="fa-wind" style="font-size:22; color:#ffffff; padding:0"/>
+  </DvBox>
+  <DvStack gap="none" style="padding-left:4">
+    <DvLabel class="title" text="@app.title" style="white-space:nowrap"/>
+    <DvLabel class="caption" text="{Subtitle}" style="white-space:nowrap"/>
+  </DvStack>
+
+  <DvSpacer/>
+
+  <DvButton class="{MainClass}" icon="fa-gauge-high" text="@nav.main" onclick="ShowMain"/>
+  <DvButton class="{MonitorClass}" icon="fa-chart-line" text="@nav.monitor" onclick="ShowMonitor"/>
+  <DvButton class="{RecipeClass}" icon="fa-flask" text="@nav.recipe" onclick="ShowRecipe"/>
+  <DvButton class="{ScheduleClass}" icon="fa-calendar-days" text="@nav.schedule" onclick="ShowSchedule"/>
+  <DvRow gap="none">
+    <DvButton class="{AlarmClass}" icon="fa-bell" text="@nav.alarm" onclick="ShowAlarm"/>
+    <DvLabel class="count" text="{UnAcked}" visible="{HasUnAcked}"/>
+  </DvRow>
+  <DvButton class="{SettingClass}" icon="fa-gear" text="@nav.setting" onclick="ShowSetting"/>
+
+  <DvSpacer/>
+
+  <DvRow gap="sm" class="pill">
+    <DvLamp state="{CommState}" on="true" blink="{CommBlink}" style="width:12; height:12"/>
+    <DvLabel class="label" text="{CommText}" style="white-space:nowrap"/>
+  </DvRow>
+  <DvStack gap="none" align="end">
+    <DvLabel class="title mono" text="{Clock}"/>
+    <DvLabel class="caption" text="{Today}"/>
+  </DvStack>
+</DvRow>

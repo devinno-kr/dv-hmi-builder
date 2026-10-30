@@ -1,0 +1,80 @@
+<DvPageFrame vm="HotAirDryerHmi.Pages.MainPage" style="padding:16 20; gap:12">
+  <DvGrid columns="4" gap="lg">
+    <DvStat label="@main.chamber" value="{ChamberText}" unit="℃" delta="{SetDelta}" tone="{TempTone}" onclick="EditSetTemp"/>
+    <DvStat label="@main.humidity" value="{HumidityText}" unit="%RH" delta="{HumDelta}" tone="info"/>
+    <DvStat label="@main.heater" value="{HeaterText}" unit="%" delta="{HeaterDelta}" tone="warning"/>
+    <DvStat label="@main.batches" value="{BatchText}" unit="@unit.times" delta="{RunTimeText}" tone="success"/>
+  </DvGrid>
+
+  <DvCard title="@main.process" badge="{RecipeBadge}" grow="1" style="height:0">
+    <DvProcess look="rich" flow-animation="{Flowing}" grow="1" style="height:0">
+      <DvTerminal name="AIR" text="@proc.air"/>
+      <DvInline name="F1" kind="filter" label="F-101"/>
+      <DvPump name="B1" kind="blower" running="{FanOn}" label="B-101"/>
+      <Heater name="H1" running="{HeaterOn}" label="H-101"/>
+      <DvTerminal name="RAW" text="@proc.loader" rank="4" row="0"/>
+      <DvVessel name="D1" kind="hopper" level="{Level}" label="D-101" row="1">
+        <DvAttach side="right">
+          <DvLabel class="caption muted" text="@proc.hopper"/>
+          <DvLabel class="title" text="{ChamberShort}" style="width:96"/>
+          <DvLabel class="label" text="{HumidityShort}" style="width:96"/>
+          <DvLabel class="caption" text="{LevelShort}" style="width:96"/>
+        </DvAttach>
+      </DvVessel>
+      <DvValve name="V1" kind="butterfly" open="{DamperOpen}" label="DMP-101"/>
+      <DvTerminal name="EXH" text="@proc.exhaust"/>
+      <DvTerminal name="OUT" text="@proc.molding"/>
+
+      <DvLine from="AIR" to="F1.in" medium="air"/>
+      <DvLine from="F1.out" to="B1.in"/>
+      <DvLine from="B1.out" to="H1.in"/>
+      <DvLine from="H1.out" to="D1.side" arrow="end"/>
+      <DvLine from="RAW" to="D1.top" arrow="end"/>
+      <DvLine from="D1.top" to="V1.in" medium="air"/>
+      <DvLine from="V1.out" to="EXH"/>
+      <DvLine from="D1.bottom" to="OUT"/>
+
+      <DvInstrument name="TIC1" tag="TIC" number="101" on="H1" panel="true" value="{HeaterShort}"/>
+      <DvSignal from="TIC1" to="H1"/>
+    </DvProcess>
+  </DvCard>
+
+  <DvGrid columns="1fr 1fr 1.3fr" gap="lg">
+    <DvCard title="@main.steps" badge="{StateText}">
+      <DvStepBar steps="{Steps}" current="{Step}"/>
+      <DvRow>
+        <DvStack gap="none">
+          <DvLabel class="caption" text="@main.remain"/>
+          <DvLabel class="heading mono" text="{RemainText}"/>
+        </DvStack>
+        <DvSpacer/>
+        <DvLabel class="caption" text="@main.progress"/>
+        <DvRing value="{BatchProgress}" unit="%" format="0" thickness="6" style="width:58; height:58"/>
+      </DvRow>
+    </DvCard>
+
+    <DvCard title="@main.run">
+      <DvRow gap="sm">
+        <DvSegment value="{Bind Mode}" disabled="{CannotOperate}" grow="1">
+          <DvOption value="manual" text="@mode.manual"/>
+          <DvOption value="auto" text="@mode.auto"/>
+        </DvSegment>
+        <DvButton variant="ghost" size="sm" icon="fa-rotate-left" text="@btn.reset" onclick="Reset"/>
+      </DvRow>
+      <DvRow gap="sm">
+        <DvButton variant="primary" size="lg" icon="fa-play" text="@btn.start" hold="1200" onclick="Start" grow="1"/>
+        <DvButton variant="danger" size="lg" icon="fa-stop" text="@btn.stop" hold="600" onclick="Stop" grow="1"/>
+      </DvRow>
+    </DvCard>
+
+    <DvCard title="@main.equipment">
+      <DvGrid columns="2" gap="sm">
+        <DvStatusItem label="@eq.fan" state="{FanState}" status="{FanStatus}"/>
+        <DvStatusItem label="@eq.heater" state="{HeaterState}" status="{HeaterStatus}"/>
+        <DvStatusItem label="@eq.damper" state="{DamperState}" status="{DamperStatus}"/>
+        <DvStatusItem label="@eq.door" state="{DoorState}" status="{DoorStatus}" blink="{DoorBlink}"/>
+        <DvStatusItem label="@eq.mode" state="{ModeState}" status="{ModeStatus}"/>
+      </DvGrid>
+    </DvCard>
+  </DvGrid>
+</DvPageFrame>

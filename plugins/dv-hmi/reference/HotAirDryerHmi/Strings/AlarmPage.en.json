@@ -1,0 +1,18 @@
+{
+  "btn.ackall": "Ack all",
+  "unit.count": "",
+  "alm.list": "Alarm list",
+  "alm.unacked": "Unacked {0}",
+  "alm.total": "Total {0}",
+  "alm.stat.unacked": "Unacknowledged",
+  "alm.stat.critical": "Critical (unacked)",
+  "alm.bypri": "By priority",
+  "alm.bysource": "By source",
+  "pri.critical": "Critical",
+  "pri.major": "Major",
+  "pri.minor": "Minor",
+  "src.other": "Other",
+  "alm.ackq": "Acknowledge '{0}'?",
+  "alm.acktitle": "Acknowledge alarm",
+  "alm.ackallq": "Acknowledge all {0} unacknowledged alarms?"
+}

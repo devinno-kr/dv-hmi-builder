@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  열풍 건조기 통신 설정 (Modbus TCP). 주소·해석은 메모리 맵(design/devices.json)과 같다 — 대시보드 통신 탭이 맞춰 보여 준다.
+  RemoteIP·RemotePort 는 설정 화면 값으로 바꿔 쓴다 (Dryer.ApplySetting).
+-->
+<ModbusTCPMaster RemoteIP="127.0.0.1" RemotePort="1502" Timeout="300" Interval="50">
+  <Auto Id="1" Func="FC3" Slave="1" Start="0" Length="12" />
+  <Auto Id="2" Func="FC1" Slave="1" Start="0" Length="5" />
+  <Write Name="StartCmd" Id="100" Func="FC5" Slave="1" Start="10" />
+  <Write Name="StopCmd" Id="101" Func="FC5" Slave="1" Start="11" />
+  <Write Name="ResetCmd" Id="102" Func="FC5" Slave="1" Start="12" />
+  <Write Name="AutoMode" Id="103" Func="FC5" Slave="1" Start="13" />
+  <Write Name="SetTemp" Id="104" Func="FC6" Slave="1" Start="100" />
+  <Write Name="Recipe" Id="105" Func="FC16" Slave="1" Start="110" />
+</ModbusTCPMaster>

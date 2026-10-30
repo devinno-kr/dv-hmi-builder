@@ -1,0 +1,22 @@
+{
+  "mon.setinfo": "설정 {0:0}℃ · 경고 {1:0}℃",
+  "mon.output": "출력",
+  "mon.inlet": "열풍 입구",
+  "mon.fan": "송풍 · 배기",
+  "mon.blower": "송풍기",
+  "mon.damper": "배기 댐퍼",
+  "mon.hopper": "호퍼 재료",
+  "mon.loader": "20% 아래면 로더가 자동 공급",
+  "mon.trend": "온도 트렌드",
+  "mon.trendnote": "실시간 · 감시 주기마다 기록",
+  "win.1m": "1분",
+  "win.2m": "2분",
+  "win.10m": "10분",
+  "win.1h": "1시간",
+  "ch.chamber": "건조실",
+  "ch.set": "설정",
+  "ch.inlet": "열풍 입구",
+  "ch.exhaust": "배기",
+  "mon.exhaust": "배기 온도",
+  "mon.recent": "최근 1분 추이"
+}

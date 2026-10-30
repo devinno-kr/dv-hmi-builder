@@ -1,0 +1,14 @@
+{
+  "name": "dv-hmi-builder",
+  "description": "Devinno HMI plugins for Claude Code",
+  "owner": {
+    "name": "Devinno"
+  },
+  "plugins": [
+    {
+      "name": "dv-hmi",
+      "source": "./plugins/dv-hmi",
+      "description": "Build C# HMIs with Devinno.UI and Devinno.Communication: project setup, dashboard, work history, screen pictures"
+    }
+  ]
+}
