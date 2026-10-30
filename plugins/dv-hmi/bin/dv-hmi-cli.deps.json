@@ -9,21 +9,21 @@
     ".NETCoreApp,Version=v9.0/win-x64": {
       "dv-hmi-cli/1.0.0": {
         "dependencies": {
-          "Devinno.UI": "0.4.3",
+          "Devinno.UI": "0.4.4",
           "System.Security.Cryptography.ProtectedData": "9.0.13"
         },
         "runtime": {
           "dv-hmi-cli.dll": {}
         }
       },
-      "Devinno.UI/0.4.3": {
+      "Devinno.UI/0.4.4": {
         "dependencies": {
           "SkiaSharp": "3.119.4"
         },
         "runtime": {
           "lib/net9.0/Devinno.UI.dll": {
-            "assemblyVersion": "0.4.3.0",
-            "fileVersion": "0.4.3.0"
+            "assemblyVersion": "0.4.4.0",
+            "fileVersion": "0.4.4.0"
           }
         }
       },
@@ -64,12 +64,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Devinno.UI/0.4.3": {
+    "Devinno.UI/0.4.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Gen+Y1DdSqzJCfgRQ7+RNpcptrmQf8Uaf14bkhDK7EC2nkFQm3cyEt7pno1c6bS0dUxXWKTgb3sjwenxPraxug==",
-      "path": "devinno.ui/0.4.3",
-      "hashPath": "devinno.ui.0.4.3.nupkg.sha512"
+      "sha512": "sha512-EWRakdYPN3j1ohGPtwaRDNB2rxQ2f0YDJ3+sacgbzPkkswbDTnBRe0ikeKf5RcmuEbIxrT4DCxyQUDeVHSHr6g==",
+      "path": "devinno.ui/0.4.4",
+      "hashPath": "devinno.ui.0.4.4.nupkg.sha512"
     },
     "SkiaSharp/3.119.4": {
       "type": "package",
