@@ -48,7 +48,7 @@ The code always follows the same structure, with devices, data, logic and screen
 
 The **Deploy** button on the dashboard ships the finished program.
 
-![The deploy dialog for a touch panel: a panel found on the network, with its access token already saved](assets/readme-deploy.en.webp)
+![The deploy dialog for a touch panel: the panel found on the network and each step from publishing to starting the program, with its time](assets/readme-deploy.en.webp)
 
 - **Windows PC**: it makes a zip that runs without installing .NET. Unzip it on the target PC and start the program.
 - **Senvas touch panel**: it finds the panels on the same network as this PC, then sends the program to the chosen one, installs it, sets it to start automatically and starts it. The panel's access token is asked once and kept encrypted on this PC.
