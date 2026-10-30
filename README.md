@@ -44,7 +44,20 @@ The result is an ordinary C# solution in the project folder. It contains the pro
 
 The code always follows the same structure, with devices, data, logic and screens each in their own place. The approved requirements, the stage reports and the work history stay in the project as well, so it is possible to look up later why something was built the way it was.
 
-The **Deploy** button on the dashboard ships the program. For a Windows PC it makes a zip that runs without installing .NET. For a Senvas touchscreen panel it finds the panels on the network, then sends, installs and starts the program on the chosen one; the panel's access token is asked once and kept encrypted on this PC. The program keeps its settings and records outside its own folder, so they survive when a new version is deployed. Pressing the button is up to a person, like every other step that reaches real equipment.
+## Deploying
+
+The **Deploy** button on the dashboard ships the finished program.
+
+![The deploy dialog for a touch panel: a panel found on the network, with its access token already saved](assets/readme-deploy.en.webp)
+
+- **Windows PC**: it makes a zip that runs without installing .NET. Unzip it on the target PC and start the program.
+- **Senvas touch panel**: it finds the panels on the same network as this PC, then sends the program to the chosen one, installs it, sets it to start automatically and starts it. The panel's access token is asked once and kept encrypted on this PC.
+
+The program keeps its settings and records outside its own folder, so they survive when a new version is deployed. Pressing the button is up to a person, like every other step that reaches real equipment.
+
+### Supported touch panels
+
+Touch panel programs run on [Senvas Touch](https://intosen.com/en/senvas/), a Raspberry Pi based industrial touch panel that comes in 7-inch (SV070, 1024 × 600) and 10.1-inch (1280 × 800) sizes. On the panel the program fills the screen without a window border and draws with OpenGL ES. Deployment goes through the app manager the panel comes with, so nothing else has to be installed on it. So far it has been tried on the 7-inch panel.
 
 ## What has been tried so far
 
@@ -61,7 +74,7 @@ claude plugin marketplace add devinno-kr/dv-hmi-builder
 claude plugin install dv-hmi@dv-hmi-builder
 ```
 
-To start, create an empty folder, open it in a new session in the Code tab, and say what you want to build with dv-hmi. At first only three things are asked: the project name, how to proceed (workflow or assistant mode), and where the program will run (Windows PC or Senvas touchscreen panel). After that, the project is ready in 1 to 3 minutes and the dashboard opens.
+To start, create an empty folder, open it in a new session in the Code tab, and say what you want to build with dv-hmi. At first only three things are asked: the project name, how to proceed (workflow or assistant mode), and where the program will run (Windows PC or [Senvas](https://intosen.com/en/senvas/) touchscreen panel). After that, the project is ready in 1 to 3 minutes and the dashboard opens.
 
 To continue on another day, open the same folder and say "continue". The plugin is updated with:
 
