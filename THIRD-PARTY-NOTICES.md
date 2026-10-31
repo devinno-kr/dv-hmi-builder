@@ -8,6 +8,6 @@ The dv-hmi plugin ships its command-line tool (`dv-hmi-cli`) in `plugins/dv-hmi/
 | SkiaSharp native library 3.119.4: Skia and the third-party code it includes (ANGLE, FreeType, HarfBuzz, libpng, zlib and others) | `libSkiaSharp.dll` | BSD-3-Clause, MIT and others, per component | `plugins/dv-hmi/licenses/SkiaSharp-THIRD-PARTY-NOTICES.txt` |
 | Font Awesome Free 6.1.2 (Fonticons, Inc.), embedded in `Devinno.UI.dll` | `Devinno.UI.dll` | Fonts: SIL OFL 1.1, icons: CC BY 4.0 | `plugins/dv-hmi/licenses/Devinno.UI-THIRD-PARTY-NOTICES.md` |
 
-Devinno.UI 0.4.6 (`Devinno.UI.dll`) and `dv-hmi-cli` itself are Devinno's, under the MIT license of this repository (`LICENSE`).
+Devinno.UI 0.4.7 (`Devinno.UI.dll`) and `dv-hmi-cli` itself are Devinno's, under the MIT license of this repository (`LICENSE`).
 
 Programs that dv-hmi creates get Devinno.UI and Devinno.Communication from nuget.org as packages; those packages carry their own notices.
